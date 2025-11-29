@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jade's archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+    
+    <!-- Main Title Screen -->
+    <div class="title-screen" id="titleScreen">
+        <div class="click-prompt">
+            <div class="prompt-text">click anywhere to enter</div>
+            <div class="cursor-blink">_</div>
+        </div>
+    </div>
+    
+    <!-- Pixelated Title Container -->
+    <div class="pixel-title-container hidden" id="pixelTitleContainer">
+        <div class="pixel-title" id="pixelTitle">
+            <!-- This will be populated by JavaScript with pixel divs -->
+        </div>
+    </div>
+    
+    <!-- Portfolio Content (appears after title animation) -->
+    <div class="portfolio-content hidden" id="portfolioContent">
+        <div class="content-wrapper">
+            <div class="nav-menu">
+                <div class="nav-item" data-section="about">
+                    <span class="nav-bracket">[</span>
+                    <span class="nav-text">about</span>
+                    <span class="nav-bracket">]</span>
+                </div>
+                <div class="nav-item" data-section="work">
+                    <span class="nav-bracket">[</span>
+                    <span class="nav-text">work</span>
+                    <span class="nav-bracket">]</span>
+                </div>
+                <div class="nav-item" data-section="lab">
+                    <span class="nav-bracket">[</span>
+                    <span class="nav-text">lab</span>
+                    <span class="nav-bracket">]</span>
+                </div>
+                <div class="nav-item" data-section="contact">
+                    <span class="nav-bracket">[</span>
+                    <span class="nav-text">contact</span>
+                    <span class="nav-bracket">]</span>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div class="section" id="about">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-title">about.txt</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">jade@archive:~$</span> cat about.txt
+                            </div>
+                            <div class="terminal-content">
+                                <p>creative technologist living at the intersection</p>
+                                <p>of art, code, and digital expression.</p>
+                                <br>
+                                <p>i build experiences that blur the lines between</p>
+                                <p>human creativity and computational possibilities.</p>
+                                <br>
+                                <p>currently exploring: generative art, interactive</p>
+                                <p>installations, and the aesthetics of obsolete tech.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section" id="work">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-title">work/</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">jade@archive:~$</span> ls work/
+                            </div>
+                            <div class="terminal-content">
+                                <div class="file-list">
+                                    <div class="file-item">
+                                        <span class="file-name">neural_landscapes.exe</span>
+                                        <span class="file-desc">// ai-generated terrain visualization</span>
+                                    </div>
+                                    <div class="file-item">
+                                        <span class="file-name">glitch_portraits.dat</span>
+                                        <span class="file-desc">// corrupted beauty series</span>
+                                    </div>
+                                    <div class="file-item">
+                                        <span class="file-name">retro_synth.wav</span>
+                                        <span class="file-desc">// procedural music generator</span>
+                                    </div>
+                                    <div class="file-item">
+                                        <span class="file-name">data_dreams.js</span>
+                                        <span class="file-desc">// interactive data visualization</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section" id="lab">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-title">experiments.log</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">jade@archive:~$</span> tail experiments.log
+                            </div>
+                            <div class="terminal-content">
+                                <div class="log-entry">
+                                    <span class="timestamp">[2024.11.28]</span>
+                                    <span class="log-text">testing pixel shader distortions</span>
+                                </div>
+                                <div class="log-entry">
+                                    <span class="timestamp">[2024.11.25]</span>
+                                    <span class="log-text">generative typography experiments</span>
+                                </div>
+                                <div class="log-entry">
+                                    <span class="timestamp">[2024.11.20]</span>
+                                    <span class="log-text">vintage crt simulation algorithms</span>
+                                </div>
+                                <div class="log-entry">
+                                    <span class="timestamp">[2024.11.15]</span>
+                                    <span class="log-text">neural network art generation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section" id="contact">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-title">connect.sh</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">jade@archive:~$</span> ./connect.sh
+                            </div>
+                            <div class="terminal-content">
+                                <div class="connect-item">
+                                    <span class="connect-label">email:</span>
+                                    <span class="connect-value">jade@domain.com</span>
+                                </div>
+                                <div class="connect-item">
+                                    <span class="connect-label">github:</span>
+                                    <span class="connect-value">github.com/jade</span>
+                                </div>
+                                <div class="connect-item">
+                                    <span class="connect-label">instagram:</span>
+                                    <span class="connect-value">@jade.creates</span>
+                                </div>
+                                <div class="connect-item">
+                                    <span class="connect-label">status:</span>
+                                    <span class="connect-value status-online">● available for projects</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
