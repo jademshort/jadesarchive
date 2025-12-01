@@ -136,42 +136,128 @@ body::after {
 }
 
 .pixel-title {
-    position: relative;
-    display: grid;
-    gap: 1px;
-    transform: scale(1.5);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 4rem;
+    color: var(--accent-mauve);
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: lowercase;
+    line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em;
 }
 
-.pixel {
-    width: var(--pixel-size);
-    height: var(--pixel-size);
-    background: var(--accent-mauve);
+.letter {
+    display: inline-block;
     opacity: 0;
-    transition: opacity 0.1s ease;
-    box-shadow: 
-        0 0 5px var(--accent-mauve),
-        inset 0 0 2px rgba(255,255,255,0.1);
+    position: relative;
+    text-shadow: 
+        0 0 10px var(--accent-mauve),
+        0 0 20px var(--accent-bright);
 }
 
-.pixel.active {
+.letter.typed {
     opacity: 1;
-    animation: pixel-glow 0.3s ease;
 }
 
-@keyframes pixel-glow {
-    0% { 
-        transform: scale(0);
-        box-shadow: 0 0 20px var(--accent-bright);
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--accent-mauve);
+    margin-left: 2px;
+    animation: cursorBlink 1s infinite;
+    vertical-align: text-bottom;
+    box-shadow: 0 0 10px var(--accent-mauve);
+}
+
+.typing-cursor.typing {
+    animation: cursorType 0.1s infinite;
+}
+
+.typing-cursor.finished {
+    animation: cursorFade 2s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes cursorType {
+    0%, 40% { opacity: 1; }
+    41%, 100% { opacity: 0; }
+}
+
+@keyframes cursorFade {
+    0%, 70% { opacity: 1; }
+    71%, 85% { opacity: 0; }
+    86%, 100% { opacity: 1; }
+}
+
+.space {
+    width: 0.5em;
+}
+
+@keyframes letterGlitchIn {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+        filter: blur(5px);
+        text-shadow: 
+            10px 0 #ff0040,
+            -10px 0 #00ffff,
+            0 10px #ffff00;
     }
-    50% {
-        transform: scale(1.2);
-        box-shadow: 0 0 30px var(--accent-bright);
+    20% {
+        opacity: 0.3;
+        transform: scale(1.5) rotate(-15deg);
+        filter: blur(3px);
+        text-shadow: 
+            6px 0 #ff0040,
+            -6px 0 #00ffff,
+            0 6px #ffff00;
+    }
+    40% {
+        opacity: 0.7;
+        transform: scale(0.8) rotate(10deg);
+        filter: blur(1px);
+        text-shadow: 
+            3px 0 #ff0040,
+            -3px 0 #00ffff,
+            0 3px #ffff00;
+    }
+    60% {
+        opacity: 0.9;
+        transform: scale(1.1) rotate(-5deg);
+        filter: blur(0.5px);
+        text-shadow: 
+            1px 0 #ff0040,
+            -1px 0 #00ffff,
+            0 1px #ffff00;
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1.05) rotate(2deg);
+        filter: blur(0px);
+        text-shadow: 
+            0.5px 0 #ff0040,
+            -0.5px 0 #00ffff,
+            0 0.5px #ffff00;
     }
     100% {
-        transform: scale(1);
-        box-shadow: 0 0 5px var(--accent-mauve);
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0px);
+        text-shadow: 
+            0 0 10px var(--accent-mauve),
+            0 0 20px var(--accent-bright);
     }
 }
+
+
 
 /* Portfolio Content */
 .portfolio-content {
@@ -397,7 +483,8 @@ body::after {
 /* Responsive Design */
 @media (max-width: 768px) {
     .pixel-title {
-        transform: scale(1);
+        font-size: 2rem;
+        letter-spacing: 0.1em;
     }
     
     .nav-menu {

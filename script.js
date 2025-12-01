@@ -40,13 +40,69 @@ class PixelPortfolio {
     
     createPixelTitle() {
         const text = "jade's archive";
-        // For now, just show text and transition to content
-        this.pixelTitleContainer.innerHTML = '<div style="font-size: 3rem; color: var(--accent-mauve); text-align: center; font-family: monospace; text-transform: lowercase; letter-spacing: 3px; animation: pixel-glow 2s ease;">' + text + '</div>';
         
-        // Show portfolio content after delay
-        setTimeout(() => {
-            this.showPortfolioContent();
-        }, 3000);
+        // Clear the container
+        this.pixelTitle.innerHTML = '';
+        
+        // Create container for the typing text
+        const typingContainer = document.createElement('div');
+        typingContainer.style.display = 'inline-block';
+        
+        // Split text into individual letters and spaces
+        const characters = [];
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const span = document.createElement('span');
+            
+            if (char === ' ') {
+                span.className = 'space';
+                span.innerHTML = '&nbsp;';
+            } else {
+                span.className = 'letter';
+                span.textContent = char;
+            }
+            
+            characters.push(span);
+            typingContainer.appendChild(span);
+        }
+        
+        // Add typing cursor
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor typing';
+        typingContainer.appendChild(cursor);
+        
+        this.pixelTitle.appendChild(typingContainer);
+        
+        // Start typing animation
+        this.typeLetters(characters, cursor);
+    }
+    
+    typeLetters(characters, cursor) {
+        let currentIndex = 0;
+        const typingSpeed = 150; // milliseconds between each character
+        
+        const typeNextLetter = () => {
+            if (currentIndex < characters.length) {
+                // Make current character visible
+                characters[currentIndex].classList.add('typed');
+                currentIndex++;
+                
+                // Continue typing after delay
+                setTimeout(typeNextLetter, typingSpeed);
+            } else {
+                // Finished typing - change cursor to finished state
+                cursor.classList.remove('typing');
+                cursor.classList.add('finished');
+                
+                // Show portfolio after a pause
+                setTimeout(() => {
+                    this.showPortfolioContent();
+                }, 2000);
+            }
+        };
+        
+        // Start typing after a short delay
+        setTimeout(typeNextLetter, 500);
     }
     
     showPortfolioContent() {
