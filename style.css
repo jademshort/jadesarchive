@@ -1171,7 +1171,7 @@ body::after {
 @media (max-width: 768px) {
     /* Mobile title - much smaller text to prevent cutoff */
     .pixel-title {
-        font-size: 2rem !important;
+        font-size: 1.5rem !important;
         line-height: 1.3;
         text-align: center;
         padding: 0 0.5rem;
