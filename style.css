@@ -1080,3 +1080,26 @@ body::after {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-bright);
 }
+
+/* Form Success Message */
+.form-message {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(184, 134, 157, 0.1);
+    border: 1px solid var(--accent-mauve);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.success-text {
+    font-family: "Press Start 2P", cursive;
+    font-size: 1rem;
+    color: var(--accent-mauve);
+    margin-bottom: 0.5rem;
+}
+
+.success-details {
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}

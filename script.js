@@ -328,3 +328,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Contact form AJAX submission
+function setupContactForm() {
+    const form = document.getElementById('contactForm');
+    const messageDiv = document.getElementById('formMessage');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+        
+        // Show loading state
+        submitBtn.textContent = '[sending...]';
+        submitBtn.disabled = true;
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Show success message
+                form.style.display = 'none';
+                messageDiv.style.display = 'block';
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    form.reset();
+                    form.style.display = 'block';
+                    messageDiv.style.display = 'none';
+                    submitBtn.textContent = '[send]';
+                    submitBtn.disabled = false;
+                }, 5000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            // Reset button on error
+            submitBtn.textContent = '[send]';
+            submitBtn.disabled = false;
+            alert('Sorry, there was an error sending your message. Please try again.');
+        }
+    });
+}
+
+// Add setupContactForm to the existing DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', () => {
+    setupContactForm();
+});
